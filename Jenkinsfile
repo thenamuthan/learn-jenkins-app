@@ -11,15 +11,12 @@ pipeline {
             }
             steps {
                 sh '''
-                    ls -la
+                     ls -la
                     node --version
-                    npm config set legacy-peer-deps true
-                    npm clean install
-                    mkdir ~/.npm-global
-                    export NPM_CONFIG_PREFIX=~/.npm-global
-                    export PATH=$PATH:~/.npm-global/bin
-                    sudo chown -R $(whoami) ~/.npm
+                    npm --version
+                    npm ci
                     npm run build
+                    ls -la
                 '''
             }
         }
